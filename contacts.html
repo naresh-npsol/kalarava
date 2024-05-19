@@ -146,7 +146,7 @@
       </section>
       <!-- END CONTACTS-1 -->
       <!-- DIVIDER LINE -->
-      <hr class="divider">
+     
       <!-- NEWSLETTER-1
 			============================================= -->
       <section id="newsletter-1" class="newsletter-section">
@@ -154,16 +154,15 @@
           <div class="container">
             <div class="row d-flex align-items-center row-cols-1 row-cols-lg-2">
               <!-- NEWSLETTER TEXT -->
-              <div class="col">
+              <!--<div class="col">
                 <div class="newsletter-txt">
                   <h4 class="s-34 w-700">Stay up to date with our news, ideas and updates</h4>
                 </div>
               </div>
-              <!-- NEWSLETTER FORM -->
+            
               <div class="col">
-                <!--<div id="getWaitlistContainer" data-waitlist_id="15437" data-widget_type="WIDGET_3"></div><link rel="stylesheet" type="text/css" href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"/><script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>-->
                 <iframe src="https://embeds.beehiiv.com/f34edda0-ed31-4891-9672-78ba7b92bb2f?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
-              </div>
+              </div>-->
             </div>
             <!-- End row -->
           </div>
@@ -205,37 +204,30 @@
   <script>
     function includeHTML() {
       var z, i, elmnt, file, xhttp;
-      /* Loop through a collection of all HTML elements: */
       z = document.getElementsByTagName("*");
       for (i = 0; i < z.length; i++) {
         elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
         file = elmnt.getAttribute("w3-include-html");
         if (file) {
-          /* Make an HTTP request using the attribute value as the file name: */
           xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
-              if (this.status == 200) {
-                elmnt.innerHTML = this.responseText;
-              }
-              if (this.status == 404) {
-                elmnt.innerHTML = "Page not found.";
-              }
-              /* Remove the attribute, and call this function once more: */
+              if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+              if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
               elmnt.removeAttribute("w3-include-html");
               includeHTML();
             }
-          }
-          xhttp.open("GET", file, true);
+          };
+          // Append a timestamp to the URL
+          xhttp.open("GET", file + "?t=" + new Date().getTime(), true);
           xhttp.send();
-          /* Exit the function: */
           return;
         }
       }
     }
-  </script>
-  <script>
-    includeHTML();
-  </script>
-</html>
+</script>
+<script>
+  includeHTML();
+</script>
+
+ </html>
